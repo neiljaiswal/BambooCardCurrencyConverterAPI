@@ -1,3 +1,4 @@
+using BambooCardCurrencyConverterAPI.Interfaces;
 using BambooCardCurrencyConverterAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddControllers().AddNewtonsoftJson();
-builder.Services.AddSingleton<FrankfurterService>();
+builder.Services.AddSingleton<IFrankfurterService, FrankfurterService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

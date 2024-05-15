@@ -1,4 +1,5 @@
-﻿using BambooCardCurrencyConverterAPI.Models;
+﻿using BambooCardCurrencyConverterAPI.Interfaces;
+using BambooCardCurrencyConverterAPI.Models;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -7,7 +8,7 @@ namespace BambooCardCurrencyConverterAPI.Services
     /// <summary>
     /// The frankfurter service.
     /// </summary>
-    public class FrankfurterService
+    public class FrankfurterService : IFrankfurterService
     {
         private const string BaseUrl = "https://api.frankfurter.app";
         private readonly RestClient _client;

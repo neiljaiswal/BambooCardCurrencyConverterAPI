@@ -1,4 +1,5 @@
-﻿using BambooCardCurrencyConverterAPI.Models;
+﻿using BambooCardCurrencyConverterAPI.Interfaces;
+using BambooCardCurrencyConverterAPI.Models;
 using BambooCardCurrencyConverterAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +10,9 @@ namespace BambooCardCurrencyConverterAPI.Controllers
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    public class CurrencyConverterController(FrankfurterService frankfurterService) : ControllerBase
+    public class CurrencyConverterController(IFrankfurterService frankfurterService) : ControllerBase
     {
-        private readonly FrankfurterService _frankfurterService = frankfurterService;
+        private readonly IFrankfurterService _frankfurterService = frankfurterService;
         private static readonly HashSet<string> ExcludedCurrencies = ["TRY", "PLN", "THB", "MXN"];
 
         /// <summary>
@@ -73,7 +74,14 @@ namespace BambooCardCurrencyConverterAPI.Controllers
                     .Take(request.PageSize)
                     .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
-                return Ok(new { rates.Base, rates.Date, Rates = paginatedRates });
+                var response = new HistoricalRatesResponse
+                {
+                    Base = rates.Base,
+                    Date = rates.Date,
+                    Rates = paginatedRates
+                };
+
+                return Ok(response);
             }
             catch (Exception ex)
             {
