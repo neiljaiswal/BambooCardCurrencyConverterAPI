@@ -1,6 +1,6 @@
 # BambooCard Currency Converter API
 
-This is a currency converter API built using ASP.NET Core. It uses the Frankfurter API to provide exchange rates and allows for currency conversions.
+This is a currency converter API built using ASP.NET Core. It leverages the Frankfurter API to provide exchange rates and allows for currency conversions.
 
 ## Requirements
 
@@ -8,28 +8,43 @@ This is a currency converter API built using ASP.NET Core. It uses the Frankfurt
 
 ## How to Run
 
-Clone the repository:
-git clone https://github.com/yourusername/CurrencyConverterAPI.git
-cd CurrencyConverterAPI
-dotnet restore
-dotnet run
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/neiljaiswal/BambooCardCurrencyConverterAPI.git
+   cd CurrencyConverterAPI
+   ```
 
-Endpoints
+2. Restore the dependencies:
+   ```sh
+   dotnet restore
+   ```
 
-GET /api/currencyconverter/latest?baseCurrency=EUR
+3. Run the application:
+   ```sh
+   dotnet run
+   ```
+
+## Endpoints
+
+### Retrieve Latest Exchange Rates
+
+**GET /api/currencyconverter/latest?baseCurrency=EUR**
+
 Retrieves the latest exchange rates for a specific base currency.
 
-POST /api/currencyconverter/convert
+### Convert Currency Amounts
+
+**POST /api/currencyconverter/convert**
+
 Converts amounts between different currencies. Excludes TRY, PLN, THB, and MXN.
 
-POST /api/currencyconverter/historical
+### Retrieve Historical Rates
+
+**POST /api/currencyconverter/historical**
+
 Returns a set of historical rates for a given period using pagination based on a specific base currency.
 
-Assumptions
+## Assumptions
 
-The Frankfurter API may occasionally fail to respond on the first request, so the implementation includes retry logic.
-The API handles pagination for historical rates to manage large data sets efficiently.
-Enhancements
-Add more robust error handling and logging.
-Improve the retry mechanism to handle specific status codes differently.
-Cache the exchange rates to reduce the number of requests to the Frankfurter API.
+- The Frankfurter API may occasionally fail to respond on the first request, so the implementation includes retry logic.
+- The API handles pagination for historical rates to manage large data sets efficiently.
