@@ -9,10 +9,15 @@ This is a currency converter API built using ASP.NET Core. It uses the Frankfurt
 **## How to Run**
 
 Clone the repository:
+
 git clone https://github.com/neiljaiswal/BambooCardCurrencyConverterAPI.git
+
 cd CurrencyConverterAPI
+
 dotnet restore
+
 dotnet run
+
 
 **Endpoints**
 
