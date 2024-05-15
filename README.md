@@ -11,7 +11,7 @@ This is a currency converter API built using ASP.NET Core. It leverages the Fran
 1. Clone the repository:
    ```sh
    git clone https://github.com/neiljaiswal/BambooCardCurrencyConverterAPI.git
-   cd CurrencyConverterAPI
+   cd BambooCardCurrencyConverterAPI
    ```
 
 2. Restore the dependencies:
